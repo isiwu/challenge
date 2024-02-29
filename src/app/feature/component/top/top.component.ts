@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart } from 'chart.js/auto';
 import { WeatherService } from '../../service/weather.service';
 import { Title } from '@angular/platform-browser';
 
@@ -27,7 +27,6 @@ export class TopComponent {
     private readonly weatherService: WeatherService, 
     private readonly title: Title, 
     private elRef: ElementRef<HTMLElement>,
-    //private platformId: any
   ) {
     title.setTitle("Wisy | TOP");
     (async () => {
@@ -40,6 +39,7 @@ export class TopComponent {
   }
 
   protected async loadWeather() {
+    this.setLoading(true);
     const observable = await this.weatherService.weatherInfo("https://api.weather.gov/gridpoints/TOP/31,80/forecast");
     observable.subscribe((res: any) => {
       this.setLoading(false);

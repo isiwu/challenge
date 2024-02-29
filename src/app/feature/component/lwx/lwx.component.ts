@@ -32,6 +32,7 @@ export class LwxComponent {
   }
 
   protected async loadWeather() {
+    this.setLoading(true);
     const observable = await this.weatherService.weatherInfo("https://api.weather.gov/gridpoints/TOP/31,80/forecast");
     observable.subscribe((res: any) => {
       this.setLoading(false);
