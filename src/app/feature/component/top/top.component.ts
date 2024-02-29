@@ -43,15 +43,10 @@ export class TopComponent {
     const observable = await this.weatherService.weatherInfo("https://api.weather.gov/gridpoints/TOP/31,80/forecast");
     observable.subscribe((res: any) => {
       this.setLoading(false);
-      const data = res.geometry.coordinates[0];
       const labelData = res.properties.periods;
-      const datasets: any[] = [];
       const labelDataset: any[] = [];
       const tempDataset: any[] = [];
       
-      data.forEach((element: any) => {
-        datasets.push({x: element[0], y: element[1]});
-      });
 
       labelData.forEach((element: any) => {
         labelDataset.push(element.name);
