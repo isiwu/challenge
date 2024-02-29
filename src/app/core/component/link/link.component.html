@@ -1,0 +1,8 @@
+<a [href]="href" (click)="handleNavigation($event)" [ngClass]="{
+  'capitalize text-xl group text-white': true,
+  'text-green-600 cursor-default underline underline-offset-4': href===router.url,
+  'cursor-pointer text-black/80 duration-400': href!==router.url
+}">{{ text }}
+  <span [ngClass]="{'block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-red-600': href!==router.url,
+}"></span>
+</a>
